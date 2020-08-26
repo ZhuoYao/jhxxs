@@ -2,8 +2,10 @@
  一个校园社区微信小程序
 # 界面
 ## 首页
+![](https://cdn.jsdelivr.net/gh/zguolee/cloud_images/A87F4C090A093917C637E9908CFCE9E5.png)
 
-![](https://cdn.jsdelivr.net/gh/zguolee/images/image_picker_0C31CE17-8803-44B0-926D-BBF5426D3429-44307-000007CAA932BD35.png)
+## 发布
+![](https://cdn.jsdelivr.net/gh/zguolee/cloud_images/26E79312CF64602CA9D202E42D6256DD.png)
 
 ## 我的
-![](https://cdn.jsdelivr.net/gh/zguolee/images/image_picker_589FD8BC-67D3-401F-AEE1-252838E30C66-44307-000007CACE78D2CD.png)
+![](https://cdn.jsdelivr.net/gh/zguolee/cloud_images/15F71ECBB6480FA9544305D936A82C58.png)
