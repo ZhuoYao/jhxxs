@@ -1,0 +1,60 @@
+/* pages/my/my.wxss */
+
+.wxavatar {
+    width: 150rpx;
+    height: 150rpx;
+    overflow: hidden;
+}
+
+.UCenter-bg {
+    background-image: url(https://shzs.cumtlee.cn/imgs/bg-icon/title.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: linear-gradient(red, blue);
+    height: 400rpx;
+    display: flex;
+    /* justify-content: center; */
+    padding-top: 70rpx;
+    overflow: hidden;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    font-weight: 300;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.UCenter-bg text {
+    opacity: 0.8;
+}
+
+.UCenter-bg .gif-wave {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    mix-blend-mode: screen;
+    height: 100rpx;
+}
+.ckxkz{
+    background-image: url(https://shzs.cumtlee.cn/imgs/bg-icon/ckxkz.png?v=2323);
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* box-shadow: 7rpx 7rpx 7rpx #ffdad4; */
+    /* background-color: red; */
+    width: 715rpx;
+    height: 119rpx;
+}
+
+.more-bg{
+    background-image: url(https://shzs.cumtlee.cn/imgs/bg-icon/bg-gwsq.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    box-shadow: 10rpx 10rpx 10rpx #ffdad4;
+}
+.more-icon{
+    width: 30rpx;
+    height: 30rpx;
+}

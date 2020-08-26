@@ -1,0 +1,71 @@
+<view class="UCenter-bg bg-gradual-blue">
+	<open-data class="wxavatar round solids margin-top-lg" type="userAvatarUrl"></open-data>
+	<view class="text-lg margin-top-xs">
+		{{name?name:'游客'}}
+	</view>
+	<view class="margin-top-xs">
+		<text>{{username?username:'********'}}</text>
+	</view>
+	<image src="https://shzs.cumtlee.cn/imgs/bg-icon/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+</view>
+<view class="cu-list menu card-menu sm-border margin-top-sm">
+	<view class="cu-item">
+		<view class="content">
+			<text class="cuIcon-myfill text-orange" style='font-size:20px;'></text>
+			<text class="text-black">昵称</text>
+		</view>
+		<view class="action">
+			<view wx:if="{{!modalName & nickname==name}}" bindtap="showModal" data-target="DialogModal">
+				<text class="text-grey text-sm">{{nickname?nickname:'Null'}}</text>
+				<text class="cuIcon-edit text-grey text-sm" ></text>
+			</view>
+			<view wx:if="{{nickname!=name}}">
+				<text class="text-grey text-sm">{{nickname?nickname:'Null'}}</text>
+			</view>
+			<view class="flex align-center" wx:if="{{modalName}}">
+				<input class="text-grey text-sm" value="{{nickname}}" bindfocus="InputFocus" bindinput="nicknameChange"></input>
+				<button class="cu-btn bg-blue margin-left" bindtap="changenick">{{newnickname==nickname?'取消':'确定'}}</button>
+			</view>
+		</view>
+	</view>
+	<view class="cu-item">
+		<view class="content">
+			<text class="cuIcon-activityfill text-yellow" style='font-size:20px;'></text>
+			<text class="text-black">学院</text>
+		</view>
+		<view class="action">
+			<text class="text-grey text-sm">{{college?college:'Null'}}</text>
+		</view>
+	</view>
+	<view class="cu-item">
+		<view class="content">
+			<text class="cuIcon-group_fill text-cyan" style='font-size:20px;'></text>
+			<text class="text-black">班级</text>
+		</view>
+		<view class="action">
+			<text class="text-grey text-sm">{{grade?grade:'Null'}}</text>
+		</view>
+	</view>
+
+</view>
+<view class="cu-list menu card-menu sm-border">
+	<view class="cu-item arrow" data-nav='about' bindtap='kdkd'>
+		<view class="content">
+			<text class="cuIcon-circlefill text-blue" style='font-size:20px;'></text>
+			<text class="text-black">口袋矿大</text>
+		</view>
+	</view>
+
+	<view class="cu-item arrow" bindtap='login_out'>
+		<view class="content">
+			<text class="cuIcon-settingsfill text-green" style='font-size:20px;'></text>
+			<text class="text-black">身份信息认证</text>
+		</view>
+	</view>
+
+</view>
+<view style='width:100%;' class="text-center text-grey padding-sm text-sm margin-top-sm">
+	<view>Copyright © 2018-2020 IOT. All Rights Reserved.</view>
+	<view>物联网与大数据实验室&N+科技版权所有</view>
+</view>
+<tabbar tabbar="{{tabbar}}"></tabbar>

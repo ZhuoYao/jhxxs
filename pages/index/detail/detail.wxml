@@ -1,0 +1,70 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText" bindtap="back">
+		返回
+	</view>
+	<view slot="content">
+		动态详情
+	</view>
+</cu-custom>
+<view wx:if='{{article}}' class="cu-card no-card dynamic">
+	<view class="cu-item shadow">
+		<view class="cu-list menu-avatar">
+			<view class="cu-item">
+				<view class="cu-avatar round lg" style="background-image:url({{article.user.avatar}});" bindtap="reply">
+					<view class="cu-tag badge {{article.user.sex==1?'cuIcon-male bg-blue':'cuIcon-female bg-pink'}}"></view>
+				</view>
+				<view class="content flex-sub">
+					<view class="text-bold">{{article.user.nickname}}</view>
+					<view class="text-gray text-sm flex justify-between">
+						{{article.created_time}}
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="text-content">
+			{{article.body}}
+		</view>
+		<view class="grid flex-sub padding-lr col-3 grid-square margin-top-sm padding-bottom-sm">
+			<view class="bg-img }}" style="background-image:url({{image.img}});" wx:for="{{article.images}}" wx:key="image" wx:for-item="image" bindtap="ViewImage" data-url="{{article.images[index]}}">
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="cu-list menu-avatar comment" wx:for="{{comments}}" wx:key='comment_item' wx:for-item="comment_item" style="margin-top:0px;" wx:for-index="page">
+	<view class="cu-item solids-top" wx:for="{{comment_item}}" wx:key='comment' wx:for-item="comment" wx:for-index="parent_index">
+		<view class="cu-avatar round" style="background-image:url({{comment.user.avatar}});" bindtap="reply" data-parent="{{comment.id}}" data-parent_index="{{parent_index}}" data-page="{{page}}">
+			<view class="cu-tag badge {{comment.user.sex==1?'cuIcon-male bg-blue':'cuIcon-female bg-pink'}}"></view>
+		</view>
+		<view class="content">
+			<view class="text-black text-sm text-bold">{{comment.user.nickname}}</view>
+			<view class="text-gray text-xs">{{comment.created_time}}</view>
+			<view class="text-black text-content text-df">
+				{{comment.body}}
+			</view>
+			<view wx:if="{{comment.children.length}}" class="bg-gray padding-sm radius margin-top-sm text-sm">
+				<view wx:for="{{comment.children}}" wx:key='children' wx:for-item="children" wx:for-index="children_index">
+					<view class="flex" bindtap="reply" data-children="{{children.id}}" data-parent_index="{{parent_index}}" data-children_index="{{children_index}}" data-page="{{page}}">
+						<view class="flex">
+							<view class="text-cyan">{{children.user.nickname}}</view>
+							<view class="text-black">回复</view>
+							<view class="text-cyan">{{children.reply}}：</view>
+						</view>
+						<view class="flex-sub text-black">{{children.body}}</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view wx:if="{{isBottom || comments.length<10}}" class='flex justify-center align-center padding'>
+	<image src='/images/nomal.png' style="width:120rpx;height:120rpx;"></image>
+	<text class="text-grey margin-left text-df">没有更多了</text>
+</view>
+<view class='cu-tabbar-height'></view>
+<view class="cu-bar foot input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px">
+	<view class="align-center margin-left-xs" wx:if="{{(children || parent)}}">@ {{children_index==null?comments[c_page][parent_index].user.nickname:comments[c_page][parent_index].children[children_index].user.nickname}}</view>
+	<input class="solid-bottom" bindfocus="InputFocus" bindblur="InputBlur" adjust-position="{{false}}" focus="{{false}}" maxlength="128" placeholder="评论些什么吧~~" bindinput="messageChange" cursor-spacing="10" value="{{message}}"></input>
+	<button class="cu-btn bg-green shadow-blur" bindtap="comment">评论</button>
+</view>

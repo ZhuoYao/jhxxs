@@ -1,0 +1,76 @@
+<cu-custom bgColor="bg-gradual-blue">
+	<view slot="content">新鲜事</view>
+</cu-custom>
+<scroll-view scroll-x class="bg-white nav fixed" style="top:{{CustomBar}}px;">
+	<view class="flex text-center">
+		<view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{category_list}}" wx:key="category" bindtap="tabSelect" data-id="{{index}}">
+			{{item.name}}
+		</view>
+	</view>
+</scroll-view>
+<view class="cu-tabbar-height bg-white"></view>
+<swiper class="card-swiper square-dot bg-white" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff" wx:if="{{TabCur==0}}">
+  <swiper-item wx:for="{{swiperList}}" wx:key="this" class="{{cardCur==index?'cur':''}}">
+    <view class="swiper-item" bindtap="imgClick" data-url="{{item.url}}">
+      <image src="{{item.image}}" mode="aspectFill"></image>
+    </view>
+  </swiper-item>
+</swiper>
+<view class="cu-card dynamic" wx:for='{{articles[TabCur]}}' wx:key='index'>
+	<view wx:for='{{item}}' wx:key='index' class="cu-item shadow" style="margin:30rpx 30rpx 0rpx 30rpx;">
+		<view class="cu-list menu-avatar">
+			<view class="cu-item">
+				<view class="cu-avatar round lg" style="background-image:url({{item.user.avatar}});">
+					<view class="cu-tag badge {{item.user.sex==1?'cuIcon-male bg-blue':'cuIcon-female bg-pink'}}"></view>
+				</view>
+				<view class="content flex-sub">
+					<view class="text-bold text-sm">{{item.user.nickname}}</view>
+					<view class="text-gray text-sm flex justify-between">
+						{{item.created_time}}
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="text-sub padding-left padding-right" bindtap="detail" data-id="{{item.id}}">
+			{{item.body}}
+		</view>
+		<view class="grid flex-sub padding-lr col-3 grid-square margin-top-sm">
+			<view class="bg-img" style="background-image:url({{image.img}});" wx:for="{{item.images}}" wx:key="image" wx:for-item="image" bindtap="ViewImage" data-url="{{item.images[index]}}">
+			</view>
+		</view>
+		<view class="padding-sm">
+			<view style="border-top:1px solid #f1f1f1;">
+				<view class="flex margin-top-sm">
+					<view class="flex-sub" bindtap="like" data-id="{{item.id}}" data-likes="{{item.likes}}" data-index="{{index}}">
+						<view class="align-center flex justify-center">
+							<view class="text-xl">
+								<text class="cuIcon-like"></text>
+							</view>
+							<view class="margin-left-xs text-df">
+								{{item.likes}}
+							</view>
+						</view>
+					</view>
+					<view class="flex-sub" bindtap="detail" data-id="{{item.id}}">
+						<view class="align-center flex justify-center">
+							<view class="text-xl">
+								<text class="cuIcon-mark"></text>
+							</view>
+							<view class="margin-left-xs text-df">
+								{{item.comments}}
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view wx:if="{{isBottom || articles.length<10}}" class='flex justify-center align-center padding'>
+	<image src='/images/nomal.png' style="width:120rpx;height:120rpx;"></image>
+	<text class="text-grey margin-left text-df">没有更多了</text>
+</view>
+<view class="cu-tabbar-height"></view>
+<view class="cu-tabbar-height"></view>
+<tabbar tabbar="{{tabbar}}"></tabbar>

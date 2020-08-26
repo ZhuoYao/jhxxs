@@ -1,0 +1,40 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/index/post/post",
+        "pages/index/detail/detail",
+        "pages/index/imgDetail/imgDetail",
+        "pages/mine/mine",
+        "pages/mine/about/about",
+        "pages/login/login"
+    ],
+    "window": {
+        "navigationStyle": "custom"
+    },
+    "tabBar": {
+        "backgroundColor": "#ffffff",
+        "color": "#979795",
+        "selectedColor": "#1c1c1b",
+        "list": [{
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "custom-tab-bar/icon/icon_home.png",
+                "selectedIconPath": "custom-tab-bar/icon/icon_home_HL.png"
+            },
+            {
+                "pagePath": "pages/mine/mine",
+                "text": "我的",
+                "iconPath": "custom-tab-bar/icon/icon_mine.png",
+                "selectedIconPath": "custom-tab-bar/icon/icon_mine_HL.png"
+            }
+        ]
+    },
+    "sitemapLocation": "sitemap.json",
+    "usingComponents": {
+        "cu-custom": "/colorui/components/cu-custom"
+    },
+    "navigateToMiniProgramAppIdList": [
+        "wx7f811299d8a7f86a"
+    ]
+
+}

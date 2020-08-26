@@ -1,0 +1,6 @@
+.add{
+    position: fixed;
+    right: 20rpx;
+    bottom: 20rpx;
+    z-index: 999;
+}
